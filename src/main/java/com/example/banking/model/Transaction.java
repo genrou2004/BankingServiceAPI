@@ -1,8 +1,10 @@
 package com.example.banking.model;
 
 import com.example.banking.util.LocalDateTimeDeserializer;
+import com.example.banking.util.TransactionTypeDeserializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -21,9 +23,12 @@ public class Transaction {
     @JsonIgnore
     private String id;
     @NotBlank(message = "Account ID must not be blank")
+    @NotNull(message = "Account ID must not be null")
+
     private String accountId;
-    @NotNull(message = "Transaction type must not be null")
-    @Pattern(regexp = "DEPOSIT|WITHDRAW|TRANSFER", message = "Type must match one of the allowed types: [DEPOSIT, WITHDRAW, TRANSFER]")
+
+    @JsonDeserialize(using = TransactionTypeDeserializer.class)
+    @NotNull(message = "Transaction type must not be null, Type must match one of the allowed types: [DEPOSIT, WITHDRAW, TRANSFER]")
     private TransactionType type;
     @NotNull(message = "Amount must not be null")
     @Positive(message = "Amount must be greater than zero")
