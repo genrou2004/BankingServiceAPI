@@ -2,6 +2,7 @@ package com.example.banking.controller;
 
 import com.example.banking.model.Account;
 import com.example.banking.service.AccountService;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.domain.Page;
@@ -22,7 +23,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public ResponseEntity<Account> createAccount(@RequestBody Account account) {
+    public ResponseEntity<Account> createAccount(@Valid @RequestBody Account account) {
         Account savedAccount = accountService.createAccount(account);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedAccount);
     }
