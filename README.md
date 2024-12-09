@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains the implementation of a backend service (`BankingServiceAPI`) and its event-driven consumer counterpart (`ConsumerService`) for a financial institution. The system provides APIs for managing customers, accounts, and transactions, and integrates with Kafka for event-driven messaging. The service supports features such as account creation, money transfers, and transaction history retrieval, ensuring compliance with the requirements provided by Ferguson.
+This repository contains the implementation of a backend service (`BankingServiceAPI`) and its event-driven consumer counterpart (`ConsumerService`) for a financial institution. The system provides APIs for managing customers, accounts, and transactions, and integrates with Kafka for event-driven messaging. The service supports features such as account creation, money transfers, and transaction history retrieval, ensuring compliance with the requirements provided.
 
 ---
 
